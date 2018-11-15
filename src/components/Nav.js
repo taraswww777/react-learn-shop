@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import {Ceil, Row} from "../rebass-grid-custom";
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
-
-import logo from "../logo.svg";
 
 const NavList = styled.div`
 	width: 100%;

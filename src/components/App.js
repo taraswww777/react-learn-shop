@@ -4,7 +4,6 @@ import {Ceil, Container, Row} from "../rebass-grid-custom";
 
 class App extends Component {
 	render() {
-		console.log('this', this);
 		return (
 			<div>
 				<header>
