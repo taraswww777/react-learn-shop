@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Ceil, Container, H1, LINK, PreLoader, Row} from "../../rebass-grid-custom";
+import {Ceil, Container, H1, PreLoader, Row} from "../../rebass-grid-custom";
 import styled from 'styled-components';
 import {mapStateToProps} from "../../reducers/imdex";
 import NewsDispatch from "./NewsDispatch";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import _ from 'lodash';
+import ElementTags from "../../elements/ElementTags";
 
 const ENewsDetail = styled.div``;
 
@@ -16,32 +17,12 @@ const ENewsDetailDetailPicture = styled.img`
 `;
 const ENewsDetailDetailText = styled.div``;
 const ENewsDetailDate = styled.div``;
-const ENewsDetailTags = styled.div``;
-const ENewsDetailTagsLink = styled(LINK)`
-	padding: 5px;
-	text-decoration: underline;
-	cursor:pointer;
-	
-	:hover{
-		transition: 0.5s;
-		text-decoration: none;
-	}
-	
-	::before{
-		content:'#';
-		display: inline-block;
-	}
-	
-	::after{
-		content:',';
-		display: inline-block;
-	}
-	:last-child{
-		::after{
-			content:'';
-		}
-	}
+const ENewsDetailTags = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 `;
+
 const ENewsDetailRange = styled.div``;
 
 class NewsDetail extends Component {
@@ -62,9 +43,7 @@ class NewsDetail extends Component {
 							<Ceil width={[1, 1 / 2]}>
 								<ENewsDetailTitle>{detailNews.title}</ENewsDetailTitle>
 								<ENewsDetailDate>{detailNews.date}</ENewsDetailDate>
-								<ENewsDetailTags>tags: {detailNews.tags.map((tag, i) =>
-									<ENewsDetailTagsLink key={i} to={`/news/tag/${tag}`}>{tag}</ENewsDetailTagsLink>
-								)}</ENewsDetailTags>
+								{detailNews.tags && <ENewsDetailTags>tags: <ElementTags tags={detailNews.tags}/></ENewsDetailTags>}
 								<ENewsDetailRange>range: {detailNews.range}</ENewsDetailRange>
 								<ENewsDetailDetailPicture src={detailNews.detailPicture}/>
 							</Ceil>

@@ -13,10 +13,10 @@ import Reducers from './reducers/imdex';
 import {Provider} from "react-redux";
 import Exception404 from "./components/Exception404";
 import NewsDetail from "./components/News/NewsDetail";
+import NewsTag from "./components/Tags";
 
 const store = createStore(Reducers, composeWithDevTools(applyMiddleware(thunk)));
 
-// TODO: page tags
 ReactDOM.render((
 	<Provider store={store}>
 		<Router>
@@ -24,6 +24,7 @@ ReactDOM.render((
 				<Switch>
 					<Route path='/' exact component={Welcome}/>
 					<Route path='/news' exact component={News}/>
+					<Route path='/tag/:tag' component={NewsTag}/>
 					<Route path='/news/:newsId' component={NewsDetail}/>
 					<Route path='*' component={Exception404}/>
 				</Switch>

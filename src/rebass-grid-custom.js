@@ -28,7 +28,6 @@ export const Ceil = props => (
 	<Box
 		{...props}
 		px={2}
-		flex='1 1 auto'
 	/>
 );
 

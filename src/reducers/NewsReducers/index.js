@@ -1,7 +1,13 @@
 // @flow
 
 import type {ReducerAction} from "../../types/ReducerAction";
-import {LOAD_DETAIL_NEWS_BY_ID, LOAD_LIST_NEWS_PAGE, loadDetailNewsById, loadListNewsPage} from "./loadListNewsPage";
+import {
+	LOAD_DETAIL_NEWS_BY_ID,
+	LOAD_LIST_NEWS_PAGE,
+	LOAD_LIST_NEWS_PAGE_BY_TAG,
+	loadDetailNewsById,
+	loadListNewsPage, loadListNewsPageByTag
+} from "./loadListNewsPage";
 
 function NewsReducers(state: Object = {}, action: ReducerAction) {
 	switch (action.type) {
@@ -14,6 +20,12 @@ function NewsReducers(state: Object = {}, action: ReducerAction) {
 			return {
 				...state,
 				detailNews: loadDetailNewsById(action.payload.newsId)
+			};
+		case LOAD_LIST_NEWS_PAGE_BY_TAG:
+			return {
+				...state,
+				listNews: loadListNewsPageByTag(action.payload.tag, action.payload.pageNum, action.payload.pageSize),
+				currentTag: action.payload.tag,
 			};
 		default:
 			return state;

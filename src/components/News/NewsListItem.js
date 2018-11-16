@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {LINK} from "../../rebass-grid-custom";
 import styled from 'styled-components';
+import _ from 'lodash';
+import ElementTags from "../../elements/ElementTags";
+import type {TypeNews} from "../../types/TypeNews";
 
 const ENewsItem = styled.div``;
 const ENewsItemTitle = styled.div`
@@ -29,14 +32,16 @@ class NewsListItem extends Component {
 
 
 	render() {
+		let news: TypeNews = _.get(this.props, 'news');
 		return (
 			<ENewsItem>
-				<ENewsItemLink to={`/news/${this.props.news.id}`}>
-					<ENewsItemTitle> {this.props.news.title}</ENewsItemTitle>
-					<ENewsItemImg src={this.props.news.previewPicture}/>
-					<ENewsItemDate> {this.props.news.date}</ENewsItemDate>
+				<ENewsItemLink to={`/news/${news.id}`}>
+					<ENewsItemTitle> {news.title}</ENewsItemTitle>
+					<ENewsItemImg src={news.previewPicture}/>
+					<ENewsItemDate> {news.date}</ENewsItemDate>
 				</ENewsItemLink>
-				<ENewsItemPreviewText> {this.props.news.previewText}</ENewsItemPreviewText>
+				{news.tags && <ENewsItemDate> <ElementTags tags={news.tags}/></ENewsItemDate>}
+				<ENewsItemPreviewText> {news.previewText}</ENewsItemPreviewText>
 			</ENewsItem>
 		);
 	}
