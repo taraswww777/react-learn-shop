@@ -3,7 +3,7 @@
 import type {ReducerAction} from "../../types/ReducerAction";
 import {LOAD_DETAIL_NEWS_BY_ID, LOAD_LIST_NEWS_PAGE, loadDetailNewsById, loadListNewsPage} from "./loadListNewsPage";
 
-function NewsReducers(state = {}, action?: ReducerAction) {
+function NewsReducers(state: Object = {}, action: ReducerAction) {
 	switch (action.type) {
 		case LOAD_LIST_NEWS_PAGE:
 			return {

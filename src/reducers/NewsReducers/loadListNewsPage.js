@@ -3,7 +3,7 @@
 export const LOAD_LIST_NEWS_PAGE = 'LOAD_LIST_NEWS_PAGE';
 export const LOAD_DETAIL_NEWS_BY_ID = 'LOAD_DETAIL_NEWS_BY_ID';
 
-export function loadListNewsPage(pageNumber?: number = 1, pageSize?: number = 10): Array {
+export function loadListNewsPage(pageNumber?: number = 1, pageSize?: number = 10): Array<Object> {
 	let news = require('../../data/news');
 
 	// page navigation emulation
